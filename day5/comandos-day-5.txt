@@ -1,0 +1,76 @@
+guelan@guelan-pc:~$ kind delete cluster --all
+ERROR: unknown flag: --all
+guelan@guelan-pc:~$ kind delete cluster --all
+ERROR: unknown flag: --all
+guelan@guelan-pc:~$ kind get clusters
+cka-cluster1
+guelan@guelan-pc:~$ kind delete cluster --name cka-cluster1
+Deleting cluster "cka-cluster1" ...
+Deleted nodes: ["cka-cluster1-control-plane"]
+guelan@guelan-pc:~$ docker network prune -f
+Deleted Networks:
+kind
+
+guelan@guelan-pc:~$ kind create cluster --name cka-cluster2 --image kindest/node:v1.34.0 -v 1 --wait 5m --config config.yml
+Creating cluster "cka-cluster2" ...
+DEBUG: docker/images.go:58] Image: kindest/node:v1.34.0 present locally
+ ✓ Ensuring node image (kindest/node:v1.34.0) 🖼 
+ ✓ Preparing nodes 📦 📦 📦  
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+ ✓ Joining worker nodes 🚜 
+ ✓ Waiting ≤ 5m0s for control-plane = Ready ⏳ 
+ • Ready after 10s 💚
+Set kubectl context to "kind-cka-cluster2"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-cka-cluster2
+
+Thanks for using kind! 😊
+guelan@guelan-pc:~$ kind get clusters
+cka-cluster2
+guelan@guelan-pc:~$ kubectl get nodes
+NAME                         STATUS   ROLES           AGE     VERSION
+cka-cluster2-control-plane   Ready    control-plane   2m23s   v1.34.0
+cka-cluster2-worker          Ready    <none>          2m12s   v1.34.0
+cka-cluster2-worker2         Ready    <none>          2m12s   v1.34.0
+guelan@guelan-pc:~$ kubectl congit --set-context kind-cka-cluster2
+error: unknown command "congit" for "kubectl"
+
+Did you mean this?
+	config
+guelan@guelan-pc:~$ kubectl confit --set-context kind-cka-cluster2
+error: unknown command "confit" for "kubectl"
+
+Did you mean this?
+	config
+guelan@guelan-pc:~$ kubectl config --set-context kind-cka-cluster2
+error: unknown flag: --set-context
+See 'kubectl config --help' for usage.
+guelan@guelan-pc:~$ kubectl config get-contects
+error: unknown command "get-contects"
+See 'kubectl config -h' for help and examples
+guelan@guelan-pc:~$ kubectl config get-contects
+error: unknown command "get-contects"
+See 'kubectl config -h' for help and examples
+guelan@guelan-pc:~$ kubectl config get-contexts
+CURRENT   NAME                CLUSTER             AUTHINFO            NAMESPACE
+*         kind-cka-cluster2   kind-cka-cluster2   kind-cka-cluster2   
+guelan@guelan-pc:~$ kubectl get nodes
+NAME                         STATUS   ROLES           AGE     VERSION
+cka-cluster2-control-plane   Ready    control-plane   4m37s   v1.34.0
+cka-cluster2-worker          Ready    <none>          4m26s   v1.34.0
+cka-cluster2-worker2         Ready    <none>          4m26s   v1.34.0
+:wq!
+
+q!
+:wq!
+
+
+D
+C
+C
+uelan@guelan-pc:~$ 
+
